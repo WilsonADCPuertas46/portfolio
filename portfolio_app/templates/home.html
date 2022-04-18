@@ -1,0 +1,45 @@
+{% extends 'layout.html'  %}
+
+{% block content %}
+
+{% load static %}
+
+<header class="row bg-black">
+    <div class="col-md-4">
+        <img src="{% static 'portfolio/foto_perfil.jpg' %}" width="320">
+    </div>
+
+    <div class="col-md-8 my-auto">
+        <h1>Mi nombre es <strong>Wilson De Caro</strong></h1>
+        <h3>Soy Python | Back-end Developer jr.</h3>
+        <p>Soy una persona. Bueno yo me considero como alguien que le gusta tomar nuevos retos cada día, me gusta ser
+        proactivo, organizativo, comunicativo y adquisitivo de nuevos conocimientos. Soy un programador jr. Que está buscando
+        colaborar o iniciarse como Back-end Developer Python | Django de manera profesional, brindando mis conocimientos,
+        habilidades y así, seguir avanzar. Tengo conocimientos de tecnologías como Python, Django, SQL|PostgreSQL. </p>
+        <a href="{% static 'portfolio/cv_wilson.pdf' %}" class="btn btn-primary btn-lg rounded-0 my-3">Descargar CV</a>
+    </div>
+</header>
+
+<br/>
+<div class="row my-64 text-center">
+
+    <h3>Mis Poryectos</h3>
+
+    {% for project in projects %}
+
+    <div class="col-md-4 p-4">
+        <div class="card bg-black card-project">
+            <div class="card-body">
+                <h2>{{ project.title }}</h2>
+                <img src="{{ project.image.url }}" alt="{{project.title}}" class="card-img-top"/>
+                <p>{{ project.description }}</p>
+                <a href="{{ project.url }}" class="btn btn-light rounded-0 btn-sm" target="_blank">{{ project.title }}</a>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+
+
+{% endblock %}
